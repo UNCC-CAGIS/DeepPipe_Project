@@ -486,10 +486,12 @@ Place the inlet and pipe GeoPackages in:
 
 ``` text
 geopackage/
-    City/
+    <CITY_NAME>/
         Inlets.gpkg
         Pipes.gpkg
 ```
+
+Replace `<CITY_NAME>` with the city you configured in `fecthdatabycities.py`. Rename pipes and chosen inlets to match `Pipes.gpkg` and `Inlets.gpkg`.
 
 ### Step 4 --- Run preprocessing
 

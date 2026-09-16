@@ -1,0 +1,12 @@
+# Generated output files
+outputs/
+
+# Python cache files
+__pycache__/
+*.pyc
+
+# Virtual environment
+.venv/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
