@@ -142,7 +142,7 @@ The preprocessing script reads:
 
 ``` text
 geopackage/
-    City/
+    <CITY_NAME>/
         Inlets.gpkg
         Pipes.gpkg
 ```
@@ -355,9 +355,9 @@ For each processed city, the final GeoPackage is stored under:
 
 ``` text
 geopackage/
-    City/
+    <CITY_NAME>/
         Final/
-            City.gpkg
+            <CITY_NAME>.gpkg
 ```
 
 Each final GeoPackage contains two layers:
@@ -506,7 +506,7 @@ python final_code_to_extract.py
 Check:
 
 ``` text
-geopackage/City/Final/City.gpkg
+geopackage/<CITY_NAME>/Final/<CITY_NAME>.gpkg
 ```
 
 and:

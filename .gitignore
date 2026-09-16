@@ -1,5 +1,7 @@
 # Generated output files
 outputs/
+geopackage/*
+!geopackage/.gitkeep
 
 # Python cache files
 __pycache__/
