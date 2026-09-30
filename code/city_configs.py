@@ -2,7 +2,7 @@ CITY_CONFIG = {
 
     "Raleigh": {
         "url": "https://maps.raleighnc.gov/arcgis/rest/services/PublicWorks/Stormwater/MapServer",
-        "layers": [0, 11]
+        "layers": [0, 1, 8, 11]
     },
 
     "Greensboro": {
@@ -12,7 +12,7 @@ CITY_CONFIG = {
 
     "Fayetteville": {
         "url": "https://gismaps.ci.fayetteville.nc.us/cwmain/rest/services/Stormwater/MapServer",
-        "layers": [2, 5]
+        "layers": [2, 4, 5]
     },
     "Wilmington": {
         "url": "https://gis.wilmingtonnc.gov/arcgis/rest/services/PubSvc/Stormwater_Inventory/MapServer/",
