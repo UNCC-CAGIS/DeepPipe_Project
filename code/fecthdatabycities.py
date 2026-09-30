@@ -10,17 +10,17 @@ from shapely.geometry import (
 import pandas as pd
 import time
 import os
-
+from city_configs import CITY_CONFIG
 
 # =====================================================
 # CONFIG
 # =====================================================
 
-CITY_NAME = "Apex"
+CITY_NAME = "Fayetteville"
 
-BASE_URL = "https://gis.apexnc.org/server/rest/services/Operational/Apex_Stormwater/MapServer"
+BASE_URL = CITY_CONFIG[CITY_NAME]["url"]
 
-LAYER_IDS = [3, 4, 10, 12]
+LAYER_IDS = CITY_CONFIG[CITY_NAME]["layers"]
 
 CITY_OUTPUT_DIR = os.path.join("outputs", CITY_NAME)
 
