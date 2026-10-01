@@ -106,10 +106,12 @@ def fetch_all_features(layer_id, batch_size=1000):
 
         features = data.get("features", [])
 
+        all_features.extend(features)
+
         if not data.get("exceededTransferLimit", False):
             break
 
-        all_features.extend(features)
+        # all_features.extend(features)
 
         print(f"Layer {layer_id}: downloaded {len(all_features)} features")
 
