@@ -16,7 +16,7 @@ from city_configs import CITY_CONFIG
 # CONFIG
 # =====================================================
 
-CITY_NAME = "Fayetteville"
+CITY_NAME = "Raleigh" 
 
 BASE_URL = CITY_CONFIG[CITY_NAME]["url"]
 
@@ -238,9 +238,14 @@ def download_layer(layer_id):
         f"{safe_name}.geojson"
     )
 
+    # gpkg_path = os.path.join(
+    #     CITY_OUTPUT_DIR,
+    #     f"{safe_name}.gpkg"
+    # )
+    
     gpkg_path = os.path.join(
-        CITY_OUTPUT_DIR,
-        f"{safe_name}.gpkg"
+        CITY_OUTPUT_DIR, 
+        f"{layer_id}.gpkg"
     )
 
     fields_csv_path = os.path.join(
