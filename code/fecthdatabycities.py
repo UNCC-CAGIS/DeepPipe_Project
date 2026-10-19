@@ -10,17 +10,17 @@ from shapely.geometry import (
 import pandas as pd
 import time
 import os
-
+from city_configs import CITY_CONFIG
 
 # =====================================================
 # CONFIG
 # =====================================================
 
-CITY_NAME = "Apex"
+CITY_NAME = "Raleigh" 
 
-BASE_URL = "https://gis.apexnc.org/server/rest/services/Operational/Apex_Stormwater/MapServer"
+BASE_URL = CITY_CONFIG[CITY_NAME]["url"]
 
-LAYER_IDS = [3, 4, 10, 12]
+LAYER_IDS = CITY_CONFIG[CITY_NAME]["layers"]
 
 CITY_OUTPUT_DIR = os.path.join("outputs", CITY_NAME)
 
@@ -106,10 +106,12 @@ def fetch_all_features(layer_id, batch_size=1000):
 
         features = data.get("features", [])
 
+        all_features.extend(features)
+
         if not data.get("exceededTransferLimit", False):
             break
 
-        all_features.extend(features)
+        # all_features.extend(features)
 
         print(f"Layer {layer_id}: downloaded {len(all_features)} features")
 
@@ -236,9 +238,14 @@ def download_layer(layer_id):
         f"{safe_name}.geojson"
     )
 
+    # gpkg_path = os.path.join(
+    #     CITY_OUTPUT_DIR,
+    #     f"{safe_name}.gpkg"
+    # )
+    
     gpkg_path = os.path.join(
-        CITY_OUTPUT_DIR,
-        f"{safe_name}.gpkg"
+        CITY_OUTPUT_DIR, 
+        f"{layer_id}.gpkg"
     )
 
     fields_csv_path = os.path.join(

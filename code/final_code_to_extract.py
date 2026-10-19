@@ -60,6 +60,25 @@ CITY_CONFIG = {
 BASE_FOLDER = "geopackage"
 
 # =====================================================
+# BUILT ACTIVE FILE PRE-PROCESSING SET
+# =====================================================
+
+active_cities = {
+    city: cfg
+    for city, cfg in CITY_CONFIG.items()
+    if os.path.exists(os.path.join(BASE_FOLDER, city, "Inlets.gpkg"))
+    and os.path.exists(os.path.join(BASE_FOLDER, city, "Pipes.gpkg"))
+}
+
+for city in CITY_CONFIG:
+    if city in active_cities:
+        print(f"  FOUND    : {city}")
+    else:
+        print(f"  MISSING  : {city}")
+
+print(f"\n{len(active_cities)} of {len(CITY_CONFIG)} cities ready to process\n")
+
+# =====================================================
 # QA CONFIG
 # =====================================================
 
@@ -107,7 +126,7 @@ def get_start_end(geom):
 # PROCESS CITIES
 # =====================================================
 
-for city, cfg in CITY_CONFIG.items():
+for city, cfg in active_cities.items():
 
     print("\n" + "=" * 60)
     print(f"Processing {city}")
