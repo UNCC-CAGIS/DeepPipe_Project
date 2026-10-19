@@ -2,7 +2,13 @@ CITY_CONFIG = {
 
     "Raleigh": {
         "url": "https://maps.raleighnc.gov/arcgis/rest/services/PublicWorks/Stormwater/MapServer",
-        "layers": [0, 1, 8, 11]
+        "layers": [0, 1, 8, 11],
+        "layer_roles": {
+            0: "inlet",
+            1: "junction",   # separate layer — Raleigh's organization
+            8: "channel",
+            11: "pipe"
+        }
     },
 
     "Greensboro": {
