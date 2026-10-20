@@ -5,7 +5,7 @@ CITY_CONFIG = {
         "layers": [0, 1, 8, 11],
         "layer_roles": {
             0: "inlet",
-            1: "junction",   # separate layer — Raleigh's organization
+            1: "junction",
             8: "channel",
             11: "pipe"
         }

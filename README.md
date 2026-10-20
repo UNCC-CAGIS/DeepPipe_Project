@@ -475,30 +475,29 @@ with the appropriate ArcGIS REST service URLs and layer IDs.
 Run the data collection script:
 
 ``` bash
-python fecthdatabycities.py
+python .\code\fecthdatabycities.py
 ```
+
+Running the code inside the `\code\` will create an output directory within the code directory, which is not intended result.
 
 Verify the download QA output.
 
-### Step 3 --- Organize input datasets
+### Step 3 --- Run assembly script
 
-Place the inlet and pipe GeoPackages in:
+Run the assembly script:
 
-``` text
-geopackage/
-    <CITY_NAME>/
-        Inlets.gpkg
-        Pipes.gpkg
+``` bash
+python .\code\merge_assembly.py <CITY_NAME1> <CITY_NAME2> ...
 ```
 
-Replace `<CITY_NAME>` with the city you configured in `fecthdatabycities.py`. Rename pipes and chosen inlets to match `Pipes.gpkg` and `Inlets.gpkg`.
+Replace `<CITY_NAME>` with the folder of the city located in `/outputs/`. The names much match was is written in `city_configs.py`.
 
 ### Step 4 --- Run preprocessing
 
 Run:
 
 ``` bash
-python final_code_to_extract.py
+python .\code\final_code_to_extract.py
 ```
 
 ### Step 5 --- Review outputs

@@ -1,7 +1,7 @@
 # Copyright 2026 University of North Carolina at Charlotte.
 # v 1.0.0
 # Scott Do (Reshlynt)
-# The function of this script is to merge inlet and junction data into a single gpkg file for a given city. It presumes that the data for the city has already been fetched and stored in a directory named after the city in outputs. This should be run after the fetchdatabycities.py.
+# The function of this script is to merge inlet and junction data into a single gpkg file for a given city. It presumes that the data for the city has already been fetched and stored in a directory named after the city in \outputs. This should be run after the fetchdatabycities.py.
 
 import argparse
 import os
