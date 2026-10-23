@@ -64,6 +64,7 @@ for city in args.cities:
 
         print(f"  Layer {layer_id:>3} | {role:<10} | {len(gdf):,} features")
 
+        # Merge layers based on their role, set in city_configs.py
         if role in ("inlet", "junction", "structure"):
             gdf["feature_type"] = role
             node_layers.append(gdf)
