@@ -18,7 +18,12 @@ CITY_CONFIG = {
 
     "Fayetteville": {
         "url": "https://gismaps.ci.fayetteville.nc.us/cwmain/rest/services/Stormwater/MapServer",
-        "layers": [2, 4, 5]
+        "layers": [2, 4, 5],
+        "layer_roles": {
+            2: "structure",
+            4: "channel",
+            5: "pipe"
+        }
     },
     "Wilmington": {
         "url": "https://gis.wilmingtonnc.gov/arcgis/rest/services/PubSvc/Stormwater_Inventory/MapServer/",
