@@ -68,8 +68,20 @@ def get_layer_count(layer_id):
 
     response = requests.get(query_url, params=params)
     response.raise_for_status()
+    
+    ##########
+    # Attempted fix of download error
+    data = response.json()
 
-    return response.json()["count"]
+    if "error" in data:
+        print(f"  [WARN] Count unavailable for layer {layer_id}: "
+              f"{data['error'].get('message', data['error'])}")
+        return None
+    
+    return data.get("count")
+    #########
+    
+    # return response.json()["count"]
 
 
 # =====================================================
@@ -300,13 +312,24 @@ def download_layer(layer_id):
     downloaded_count = len(gdf)
 
     print("\n================ QA SUMMARY ================")
-    print(f"ArcGIS Count     : {expected_count:,}")
+    #print(f"ArcGIS Count     : {expected_count:,}")
+    print(f"ArcGIS Count     : {f'{expected_count:,}' if expected_count is not None else 'N/A'}")
     print(f"Downloaded Count : {downloaded_count:,}")
 
-    if expected_count == downloaded_count:
+    # if expected_count == downloaded_count:
+    #     print("Status           : PASS")
+    # else:
+    #     print(f"Status           : FAIL ({expected_count-downloaded_count:,} features missing)")
+    
+    ################
+    ## Updated QA Summary
+    if expected_count is None:
+        print("Status           : UNKNOWN (server rejected count query)")
+    elif expected_count == downloaded_count:
         print("Status           : PASS")
     else:
-        print(f"Status           : FAIL ({expected_count-downloaded_count:,} features missing)")
+        print(f"Status           : FAIL ({expected_count - downloaded_count:,} features missing)")
+    ##################
 
     print(f"Valid features: {len(gdf)}")
 
