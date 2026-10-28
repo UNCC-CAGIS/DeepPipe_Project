@@ -508,6 +508,20 @@ Check:
 geopackage/<CITY_NAME>/Final/<CITY_NAME>.gpkg
 ```
 
+### Refresh selected cities
+
+To remove old assembled data and rebuild only selected cities, run the
+refresh wrapper from the repository root:
+
+``` bash
+python code\refresh_geopackage.py Raleigh Fayetteville
+```
+
+The wrapper deletes only `geopackage/<CITY_NAME>` for the cities passed
+as arguments and then passes those same arguments to
+`code\merge_assembly.py`. City directories not listed in the command are
+left untouched.
+
 and:
 
 ``` text

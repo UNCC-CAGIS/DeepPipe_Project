@@ -1,13 +1,17 @@
 # Copyright 2026 University of North Carolina at Charlotte.
 # v 1.0.0
 # Scott Do (Reshlynt)
-# The function of this script is to merge inlet and junction data into a single gpkg file for a given city. It presumes that the data for the city has already been fetched and stored in a directory named after the city in \outputs. This should be run after the fetchdatabycities.py.
+# The function of this script is to merge inlet and junction data into two gpkg file for a given city. It presumes that the data for the city has already been fetched and stored in a directory named after the city in outputs. This should be run after the fetchdatabycities.py.
 
 import argparse
 import os
+import sys
+import shutil
 import geopandas as gpd
 import pandas as pd
 from city_configs import CITY_CONFIG
+
+
 
 # =====================================================
 # ARGUMENTS
@@ -37,6 +41,17 @@ for city in args.cities:
             f"'{city}' has no layer_roles defined in CITY_CONFIG."
         )
 
+# ====================================================
+# PREPARE OUTPUT DIRECTORY
+# ==================================================
+
+if os.path.exists("geopackage"):
+    for city in args.cities:
+        output_dir = os.path.join("geopackage", city)
+        if os.path.exists(output_dir):
+            print(f"Removing existing output directory for {city}: {output_dir}")
+            shutil.rmtree(output_dir)
+
 # =====================================================
 # ASSEMBLY
 # =====================================================
@@ -65,7 +80,8 @@ for city in args.cities:
         print(f"  Layer {layer_id:>3} | {role:<10} | {len(gdf):,} features")
 
         # Merge layers based on their role, set in city_configs.py
-        if role in ("inlet", "junction", "structure"):
+        
+        if role in ("inlet", "junction", "structure", "IO"):
             gdf["feature_type"] = role
             node_layers.append(gdf)
 
