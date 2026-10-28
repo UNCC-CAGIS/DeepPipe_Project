@@ -9,7 +9,11 @@ CITY_CONFIG = {
             2: "IO",
             8: "channel",
             11: "pipe"
-        }
+        },
+        "node_id": "FACILITYID",                        # must exist in every node layer
+        "crs_epsg": 2264,                               # what fetchdatabycities.py requests
+        "required_roles": ["inlet", "junction", "pipe"] 
+
     },
 
     "Greensboro": {
