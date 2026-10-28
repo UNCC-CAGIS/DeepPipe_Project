@@ -2,18 +2,24 @@ CITY_CONFIG = {
 
     "Raleigh": {
         "url": "https://maps.raleighnc.gov/arcgis/rest/services/PublicWorks/Stormwater/MapServer",
-        "layers": [0, 1, 2, 8, 11],
+        "layers": [0, 1, 3, 8, 11],
         "layer_roles": {
             0: "inlet",
             1: "junction",
-            2: "IO",
+            3: "IO",
             8: "channel",
             11: "pipe"
         },
-        "node_id": "FACILITYID",                        # must exist in every node layer
-        "crs_epsg": 2264,                               # what fetchdatabycities.py requests
+        "type_fields": {
+            3: ("IOTYPE", {"Inlet": "pipe_inlet", "Outlet": "pipe_outlet"})
+        },
+        "exclude_values": {
+            3: ("IOTYPE", ["Abandoned", "Removed"])
+        },
+        "node_id": "FACILITYID",                        
+        "crs_epsg": 2264,      
         "required_roles": ["inlet", "junction", "pipe"] 
-
+        
     },
 
     "Greensboro": {
