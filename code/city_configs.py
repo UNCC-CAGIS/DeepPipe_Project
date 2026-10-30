@@ -13,13 +13,13 @@ CITY_CONFIG = {
         "type_fields": {
             3: ("IOTYPE", {"Inlet": "pipe_inlet", "Outlet": "pipe_outlet"})
         },
-        "exclude_values": {
-            3: ("IOTYPE", ["Abandoned", "Removed"])
-        },
-        "node_id": "FACILITYID",                        
-        "crs_epsg": 2264,      
-        "required_roles": ["inlet", "junction", "pipe"] 
         
+        # This was considered for validation purposes, but it will not be used currently.
+        # Future development may use this to validate that the downloaded data contains these fields.
+        
+        #"node_id": "FACILITYID",                        
+        #"crs_epsg": 2264,      
+        #"required_roles": ["inlet", "pipe"] 
     },
 
     "Greensboro": {
