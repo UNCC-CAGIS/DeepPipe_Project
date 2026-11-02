@@ -1,4 +1,7 @@
+# **This project has now been retired, as a new method of analysis has been taken over this one, that being Progressive Graph Neural Network. **
+
 # Stormwater Infrastructure Data Collection and Preprocessing
+
 
 ## 1. Project Overview
 
